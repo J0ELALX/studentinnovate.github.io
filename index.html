@@ -17,20 +17,22 @@
                 <h1>Student Innovate</h1>
             </div>
         </div>
-        <nav>
+        <nav id="navbar">
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="login.html" class="btn login-btn">Login</a></li> <!-- Updated href to point to login.html -->
             </ul>
         </nav>
     </header>
 
     <section id="hero">
-        <h2>Empowering Students to Innovate</h2>
-        <p>Explore, Create, and Transform the Future.</p>
-        <a href="#about" class="btn">Learn More</a>
+        <div class="hero-content">
+            <h2>Empowering Students to Innovate</h2>
+            <p>Explore, Create, and Transform the Future.</p>
+            <a href="#about" class="btn">Learn More</a>
+        </div>
     </section>
 
     <section id="about">
@@ -40,13 +42,33 @@
 
     <section id="projects">
         <h2>Our Projects</h2>
-        <div class="project-card">
+        <div class="project-card" data-project="1">
             <h3>Project 1</h3>
             <p>A sustainable water-saving model built using IoT and Raspberry Pi technology.</p>
+            <div class="project-images">
+                <img src="projectimage1.png" alt="Project 1 Image 1" />
+                <img src="projimg2.png" alt="Project 1 Image 2" />
+            </div>
         </div>
-        <div class="project-card">
+        <div class="project-card" data-project="2">
             <h3>Project 2</h3>
             <p>An energy-efficient smart home system developed to rationalize energy consumption.</p>
+            <div class="project-images">
+                <img src="project-image1.jpg" alt="Project 1" class="small-image" loading="lazy" />
+                <img src="project-image2.jpg" alt="Project 2" class="small-image" loading="lazy" />
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <h2>What Our Students Say</h2>
+        <div class="testimonial">
+            <p>"Student Innovate has given me the opportunity to showcase my project and learn from others!"</p>
+            <h4>- Jane Doe</h4>
+        </div>
+        <div class="testimonial">
+            <p>"The platform has connected me with amazing mentors and resources!"</p>
+            <h4>- John Smith</h4>
         </div>
     </section>
 
@@ -55,5 +77,17 @@
         <p>Email: info@studentinnovate.com</p>
         <p>Phone: +1234567890</p>
     </footer>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <button id="back-to-top" class="back-to-top">↑</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
