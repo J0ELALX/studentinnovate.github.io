@@ -60,38 +60,42 @@ nav ul li a:hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    gap: 20px; /* Add space between cards */
 }
 
 .project-card {
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px; /* More rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow for better depth */
     padding: 20px;
-    width: 300px;
+    width: 350px; /* Slightly larger width */
     text-align: center;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: slideIn 0.5s ease forwards;
 }
 
-@keyframes slideIn {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
+.project-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 .project-card img {
-    width: 100%;
+    width: 100%; /* Full width of the card */
+    height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
 }
 
 .project-card h3 {
     margin-top: 15px;
+    font-size: 1.5em; /* Increase title font size */
 }
 
 .project-card p {
     font-size: 1em;
     margin: 10px 0;
+    color: #555; /* Slightly muted text color */
 }
+
 
 .project-card button {
     background-color: #004d66;
@@ -187,5 +191,113 @@ footer {
 
     .project-section h2 {
         font-size: 1.5em; /* Even smaller heading for very small screens */
+    }
+}
+.slider {
+    position: relative;
+    max-width: 100%; /* Adjust based on your layout */
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.slides img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
+}
+
+button.prev, button.next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+button.prev {
+    left: 10px;
+}
+
+button.next {
+    right: 10px;
+}
+
+.dots {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dots span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.dots span.active {
+    background-color: #004d66; /* Active dot color */
+}
+
+
+.dots .active {
+    background-color: #004d66; /* Active dot color */
+}
+
+/* Image Box Styles */
+.image-box {
+    background: white; /* Background color of the box */
+    border: 2px solid #add8e6; /* Light blue border color */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    overflow: hidden; /* Ensure rounded corners on overflow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effects */
+    margin: 20px; /* Space around boxes */
+    width: 100%; /* Full width in the project grid */
+    max-width: 350px; /* Max width for larger screens */
+}
+
+/* Image styles within the box */
+.image-box img {
+    width: 100%; /* Full width of the box */
+    height: auto; /* Maintain aspect ratio */
+    border-bottom: 2px solid #add8e6; /* Light blue border below the image */
+}
+
+/* Title styles within the box */
+.image-box h3 {
+    text-align: center; /* Center title */
+    font-size: 1.5em; /* Title font size */
+    margin: 10px 0; /* Margin around title */
+    color: #add8e6; /* Light blue title color */
+}
+
+/* Hover effects for image boxes */
+.image-box:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Responsive adjustments for image boxes */
+@media (max-width: 768px) {
+    .image-box {
+        margin: 10px; /* Reduced margin on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .image-box {
+        max-width: 100%; /* Full width for very small screens */
     }
 }
