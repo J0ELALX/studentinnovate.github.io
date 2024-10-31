@@ -149,18 +149,42 @@ section {
     text-align    center;
 }
 
-#about, #projects {
-    background-color: white;
+/* About Us Section */
+/* About Us Section with Light Blue Background */
+#about {
+    background-color: #e0f7fa; /* Light blue shade */
+    padding: 50px 20px;
     margin: 50px 20px;
     border-radius: 12px;
     box-shadow: var(--box-shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: left; /* Align content to the left for a professional look */
 }
 
-#about:hover, #projects:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--box-shadow-hover);
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
+
+.about-image {
+    max-width: 40%;
+    height: auto;
+    border-radius: 12px;
+    margin-right: 20px;
+    box-shadow: var(--box-shadow-light);
+}
+
+.about-text {
+    flex: 1;
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
 
 /* Project card styles */
 .project-card {
@@ -270,10 +294,80 @@ footer {
 .back-to-top:hover {
     background-color: #00394d; /* Darken on hover */
 /* Add smooth scroll behavior */
+/* Keyframe for fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Keyframe for slide-in from left animation */
+@keyframes slideInLeft {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Keyframe for slide-in from right animation */
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Fade-in effect for hero section */
+#hero {
+    animation: fadeIn 2s ease-in-out;
+}
+
+/* Slide-in effect for the header */
+header {
+    animation: slideInLeft 1.5s ease-out;
+}
+
+/* Slide-in effect for About Us section */
+#about {
+    animation: slideInRight 1.5s ease-out;
+}
+
+/* Animating buttons with hover effect */
+.btn {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    animation: fadeIn 2s ease-in-out 0.5s; /* Delayed fade-in for buttons */
+}
+
+.btn:hover {
+    background-color: #00394d; /* Keep hover effect */
+    transform: translateY(-5px) scale(1.05); /* Hover animation */
+}
+
+/* Add animation to testimonials */
+.testimonial {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Fade-in effect for each project card */
+.project-card {
+    opacity: 0;
+    animation: fadeIn 1.5s ease-in-out forwards;
+}
+
+/* Delaying each project card animation for staggered effect */
+.project-card:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+/* Smooth scrolling */
 html {
     scroll-behavior: smooth;
+}
+
 
 }
 
 }
-
