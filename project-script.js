@@ -30,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function openModal(projectId) {
-        // Fetch project details based on projectId
         const projectDetails = {
             1: {
                 title: "Sustainable Water-saving Model",
@@ -53,47 +52,114 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.style.display = 'flex';
         }
     }
+
     // Smooth scroll for navigation
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({
-            behavior: 'smooth'
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
         });
     });
-});
-// Smooth scroll for navigation
-document.querySelectorAll('nav a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        target.scrollIntoView({
-            behavior: 'smooth'
+
+    // Scroll to top button
+    const scrollToTopButton = document.createElement('button');
+    scrollToTopButton.innerText = '↑';
+    scrollToTopButton.classList.add('scroll-to-top');
+    document.body.appendChild(scrollToTopButton);
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            scrollToTopButton.style.display = 'block'; // Show button after scrolling down
+        } else {
+            scrollToTopButton.style.display = 'none'; // Hide button when back at the top
+        }
+    });
+
+    scrollToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth' // Smooth scrolling back to top
         });
     });
-});
 
-// Scroll to top button
-const scrollToTopButton = document.createElement('button');
-scrollToTopButton.innerText = '↑';
-scrollToTopButton.classList.add('scroll-to-top');
-document.body.appendChild(scrollToTopButton);
+    // Slider functionality
+    let slideIndex = 0;
 
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-        scrollToTopButton.style.display = 'block'; // Show button after scrolling down
-    } else {
-        scrollToTopButton.style.display = 'none'; // Hide button when back at the top
+    function showSlides() {
+        const slides = document.querySelectorAll('.slides img');
+        const dots = document.querySelectorAll('.dots span');
+
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.style.display = 'none';
+        });
+
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
+
+        // Show the current slide
+        slides[slideIndex - 1].style.display = 'block';
+
+        // Update dots
+        dots.forEach(dot => {
+            dot.className = dot.className.replace(" active", "");
+        });
+        dots[slideIndex - 1].className += " active";
     }
-});
 
-scrollToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth' // Smooth scrolling back to top
-    });
-});
+    // Change slide index by n
+    function changeSlide(n) {
+        const slides = document.querySelectorAll('.slides img');
+        const dots = document.querySelectorAll('.dots span');
 
+        slideIndex += n;
+        if (slideIndex < 1) {
+            slideIndex = slides.length;
+        } else if (slideIndex > slides.length) {
+            slideIndex = 1;
+        }
 
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.style.display = 'none';
+        });
+
+        // Show the current slide
+        slides[slideIndex - 1].style.display = 'block';
+
+        // Update dots
+        dots.forEach(dot => {
+            dot.className = dot.className.replace(" active", "");
+        });
+        dots[slideIndex - 1].className += " active";
+    }
+
+    // Initialize dots
+    function initDots() {
+        const slides = document.querySelectorAll('.slides img');
+        const dotsContainer = document.querySelector('.dots');
+
+        for (let i = 0; i < slides.length; i++) {
+            const dot = document.createElement('span');
+            dot.onclick = () => {
+                slideIndex = i + 1; // Update slideIndex for dot click
+                changeSlide(0); // Display the clicked slide
+            };
+            dotsContainer.appendChild(dot);
+        }
+        // Set the first dot as active
+        dotsContainer.children[0].className += " active";
+    }
+
+    // Call functions on page load
+    window.onload = () => {
+        showSlides();
+        initDots();
+        setInterval(showSlides, 5000); // Change image every 5 seconds
+    };
 });
