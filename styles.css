@@ -146,11 +146,10 @@ nav ul li a {
 /* Section styles */
 section {
     padding: 40px;
-    text-align    center;
+    text-align: center;
 }
 
 /* About Us Section */
-/* About Us Section with Light Blue Background */
 #about {
     background-color: #e0f7fa; /* Light blue shade */
     padding: 50px 20px;
@@ -184,7 +183,6 @@ section {
     line-height: 1.8;
     margin-bottom: 20px;
 }
-
 
 /* Project card styles */
 .project-card {
@@ -293,7 +291,8 @@ footer {
 
 .back-to-top:hover {
     background-color: #00394d; /* Darken on hover */
-/* Add smooth scroll behavior */
+}
+
 /* Keyframe for fade-in animation */
 @keyframes fadeIn {
     from { opacity: 0; }
@@ -367,7 +366,70 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    /* Adjust header padding for smaller screens */
+    header {
+        padding: 15px 0;
+        margin: 0 10px;
+    }
 
+    /* Stack navigation items vertically on small screens */
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin: 10px 0; /* Adjust margin for vertical spacing */
+    }
+
+    /* Adjust hero section height and font size */
+    #hero {
+        height: 60vh;
+    }
+
+    #hero h2 {
+        font-size: clamp(1.5em, 5vw, 2.5em);
+    }
+
+    /* Make about section content stack on smaller screens */
+    .about-content {
+        flex-direction: column; /* Stack items */
+        align-items: center; /* Center items */
+    }
+
+    .about-image {
+        max-width: 80%; /* Adjust image size */
+        margin-right: 0; /* Remove margin */
+        margin-bottom: 20px; /* Add margin for spacing */
+    }
+
+    .about-text {
+        text-align: center; /* Center text on small screens */
+    }
+
+    /* Adjust project card layout */
+    .project-card {
+        width: 100%; /* Make cards full-width */
+        margin: 10px 0; /* Adjust margins */
+    }
+
+    /* Adjust button size */
+    .btn {
+        font-size: 1em; /* Reduce font size */
+        padding: 10px 20px; /* Adjust padding */
+    }
 }
 
+/* Extra small devices (phones) */
+@media (max-width: 480px) {
+    /* Adjust title font size */
+    h1 {
+        font-size: 2.5em; /* Smaller title font size */
+    }
+
+    #hero h2 {
+        font-size: 2em; /* Further reduce font size */
+    }
 }
