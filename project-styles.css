@@ -3,301 +3,268 @@ body {
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
-    background: #f0f0f0;
-    animation: fadeIn 1s ease;
+    background: radial-gradient(circle at center, #e0f7fa, #ffffff, #f0f0f0);
+    animation: backgroundShift 10s ease-in-out infinite;
+    background-size: 150%;
+    perspective: 2000px; /* Enhanced 3D perspective */
+    scroll-behavior: smooth; /* Smooth scrolling */
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+/* Scrollbar styles */
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #007080;
+    border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: #00bcd4;
+}
+
+@keyframes backgroundShift {
+    0% { background-position: left top; }
+    50% { background-position: right bottom; }
+    100% { background-position: left top; }
 }
 
 header {
-    background: #004d66;
+    background: linear-gradient(90deg, #004d66, #007080, #00bcd4);
     color: white;
-    padding: 20px 0;
+    padding: 40px 0;
     text-align: center;
+    border-bottom: 10px solid #add8e6;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.4);
+    background-size: 200% 200%; /* Larger background for animation */
+    animation: gradientShift 8s ease infinite; /* Gradient animation */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow */
+}
+
+@keyframes gradientShift {
+    0% { background-position: left; }
+    50% { background-position: right; }
+    100% { background-position: left; }
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    margin: 10px 0 0;
+    margin: 0;
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    gap: 20px; /* Reduced gap for smaller buttons */
 }
 
 nav ul li {
-    margin: 0 15px;
+    position: relative;
 }
 
 nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    padding: 5px 10px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    padding: 10px 20px; /* Adjusted padding for smaller buttons */
+    border-radius: 25px;
+    background: linear-gradient(145deg, #004d66, #007080);
+    transition: all 0.4s ease, transform 0.5s ease, box-shadow 0.4s ease;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+    transform-style: preserve-3d; /* Enable 3D transformations */
 }
 
 nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 5px;
-    transform: scale(1.05);
+    background: linear-gradient(145deg, #00b8d4, #007080);
+    transform: translateY(-5px) rotateY(10deg) rotateX(5deg); /* Reduced hover transformation */
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
+/* Project section */
 .project-section {
-    padding: 40px 20px;
+    padding: 120px 20px;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .project-section h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
+    font-size: 4em;
+    color: #004d66;
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    position: relative;
+    animation: floatText 3s ease-in-out infinite;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow */
+}
+
+@keyframes floatText {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
 }
 
 .project-grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px; /* Add space between cards */
+    gap: 30px; /* Reduced gap */
+    animation: fadeIn 1.5s ease;
 }
 
-.project-card {
-    background: white;
-    border-radius: 15px; /* More rounded corners */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Deeper shadow for better depth */
-    padding: 20px;
-    width: 350px; /* Slightly larger width */
+.card {
+    perspective: 1000px; /* Card flip perspective */
+}
+
+.image-box {
+    background: linear-gradient(145deg, #ffffff, #f0f8ff);
+    border: 4px solid #add8e6;
+    border-radius: 20px; /* Adjusted border radius */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2), 0 0 50px rgba(0, 128, 255, 0.1);
+    overflow: hidden;
+    transition: transform 0.6s ease, box-shadow 0.6s ease, filter 0.6s ease;
+    margin: 20px;
+    width: 100%;
+    max-width: 400px;
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: slideIn 0.5s ease forwards;
+    padding: 30px; /* Adjusted padding */
+    transform-style: preserve-3d; /* 3D effect */
 }
 
-.project-card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+.image-box::after {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 128, 255, 0.3);
+    border-radius: 50%;
+    filter: blur(20px);
+    transition: all 0.6s ease;
+    z-index: -1;
 }
 
-.project-card img {
-    width: 100%; /* Full width of the card */
-    height: auto; /* Maintain aspect ratio */
+.image-box:hover::after {
+    top: -40px;
+    right: -40px;
+    width: 80px;
+    height: 80px;
+    filter: blur(40px);
+    background: rgba(0, 128, 255, 0.5);
+}
+
+.image-box:hover {
+    transform: translateY(-20px) rotateX(5deg) rotateY(5deg); /* Adjusted hover transformation */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 0 100px rgba(0, 128, 255, 0.3);
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    border-bottom: 4px solid #add8e6;
     border-radius: 10px;
+    transition: transform 0.5s ease, filter 0.5s ease;
+    filter: brightness(0.9);
+    transform: translateZ(30px); /* Adds depth */
 }
 
-.project-card h3 {
-    margin-top: 15px;
-    font-size: 1.5em; /* Increase title font size */
+.image-box:hover img {
+    transform: scale(1.1) translateZ(40px); /* 3D scaling */
+    filter: brightness(1.3);
 }
 
-.project-card p {
-    font-size: 1em;
-    margin: 10px 0;
-    color: #555; /* Slightly muted text color */
+.image-box h3 {
+    font-size: 2.5em;
+    margin: 20px 0;
+    color: #004d66;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    transform: translateZ(15px);
 }
 
-
-.project-card button {
-    background-color: #004d66;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.project-card button:hover {
-    background-color: #00394d;
-    transform: scale(1.05);
-}
-
-.modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
+/* Card Flip Effect */
+.image-box .card-inner {
+    position: relative;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.image-box:hover .card-inner {
+    transform: rotateY(180deg); /* Flip on hover */
+}
+
+.image-box .card-front,
+.image-box .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Hide the back face */
+}
+
+.image-box .card-front {
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.modal-content {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
-    text-align: center;
-    position: relative;
+.image-box .card-back {
+    background: rgba(173, 216, 230, 0.9); /* Background color for back */
+    color: #004d66;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg); /* Flip it */
 }
 
-.close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-footer {
+/* Button Styles */
+button {
+    margin-top: 30px;
     background-color: #004d66;
     color: white;
-    padding: 20px;
-    text-align: center;
+    border: none;
+    padding: 15px 30px; /* Reduced padding */
+    cursor: pointer;
+    border-radius: 15px;
+    font-size: 1.2em; /* Adjusted font size */
+    letter-spacing: 1px; /* Reduced letter spacing */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Loading Animation */
-.loading {
-    display: none;
-    text-align: center;
-    font-size: 1.5em;
-    color: #004d66;
-    margin: 20px 0;
-    animation: fadeIn 1s ease;
+button:hover {
+    background-color: #007080;
+    transform: scale(1.05); /* Slightly larger on hover */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
     nav ul {
-        flex-direction: column;
-        padding: 0;
+        flex-direction: column; /* Stack navigation items on smaller screens */
+        gap: 10px; /* Reduced gap for smaller screens */
     }
 
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    .project-card {
-        width: 90%;
-        margin: 0 auto; /* Center the cards */
-    }
-
-    .project-section h2 {
-        font-size: 2em; /* Smaller heading for mobile */
-    }
-
-    footer {
-        font-size: 0.9em; /* Smaller footer text */
+    .image-box {
+        margin: 10px;
+        padding: 20px; /* Adjusted padding */
     }
 }
 
 @media (max-width: 480px) {
-    .loading {
-        font-size: 1.2em; /* Smaller loading text */
-    }
-
     .project-section h2 {
-        font-size: 1.5em; /* Even smaller heading for very small screens */
+        font-size: 2.2em;
     }
-}
-.slider {
-    position: relative;
-    max-width: 100%; /* Adjust based on your layout */
-    margin: auto;
-    overflow: hidden;
-}
 
-.slides {
-    display: flex;
-    transition: transform 0.5s ease;
-}
-
-.slides img {
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
-}
-
-button.prev, button.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 1000;
-}
-
-button.prev {
-    left: 10px;
-}
-
-button.next {
-    right: 10px;
-}
-
-.dots {
-    text-align: center;
-    padding: 10px 0;
-}
-
-.dots span {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: #bbb;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.dots span.active {
-    background-color: #004d66; /* Active dot color */
-}
-
-
-.dots .active {
-    background-color: #004d66; /* Active dot color */
-}
-
-/* Image Box Styles */
-.image-box {
-    background: white; /* Background color of the box */
-    border: 2px solid #add8e6; /* Light blue border color */
-    border-radius: 15px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    overflow: hidden; /* Ensure rounded corners on overflow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Animation for hover effects */
-    margin: 20px; /* Space around boxes */
-    width: 100%; /* Full width in the project grid */
-    max-width: 350px; /* Max width for larger screens */
-}
-
-/* Image styles within the box */
-.image-box img {
-    width: 100%; /* Full width of the box */
-    height: auto; /* Maintain aspect ratio */
-    border-bottom: 2px solid #add8e6; /* Light blue border below the image */
-}
-
-/* Title styles within the box */
-.image-box h3 {
-    text-align: center; /* Center title */
-    font-size: 1.5em; /* Title font size */
-    margin: 10px 0; /* Margin around title */
-    color: #add8e6; /* Light blue title color */
-}
-
-/* Hover effects for image boxes */
-.image-box:hover {
-    transform: scale(1.05); /* Scale effect on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Responsive adjustments for image boxes */
-@media (max-width: 768px) {
     .image-box {
-        margin: 10px; /* Reduced margin on smaller screens */
+        max-width: 100%;
     }
-}
 
-@media (max-width: 480px) {
-    .image-box {
-        max-width: 100%; /* Full width for very small screens */
+    button {
+        padding: 12px 20px; /* Further reduced padding for buttons */
+        font-size: 1em; /* Adjusted font size */
     }
 }
