@@ -1,482 +1,383 @@
-/* CSS Variables for easy theme adjustments */
-:root {
-    --primary-color: #004d66;
-    --secondary-color: #94d2bd;
-    --text-color: #333;
-    --background-gradient: linear-gradient(135deg, #005f73, #94d2bd);
-    --header-gradient: linear-gradient(135deg, rgba(0, 57, 77, 0.8), rgba(0, 127, 127, 0.8));
-    --box-shadow-light: 0 4px 8px rgba(0, 0, 0, 0.1);
-    --box-shadow-hover: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* Reset margin and padding for all elements */
+/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
-/* Body styles with advanced gradient */
 body {
-    font-family: 'Raleway', sans-serif;
-    line-height: 1.6;
-    background: var(--background-gradient);
+    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+    color: #fff;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* Smooth scroll */
 }
 
-/* Hero section styles */
-#hero {
-    position: relative;
-    height: 80vh; /* Adjust height as needed */
+/* Header Section */
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.logo img {
+    width: 200px;
+    transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+    transform: scale(1.1);
+}
+
+.header-title h1 {
+    font-size: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #00d4ff;
+    text-align: center;
+    flex-grow: 1;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.btn {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #00d4ff;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00d4ff;
+}
+
+/* Empowering Students Section */
+/* Set general styles for the empowering section */
+#empowering {
+    position: relative;
+    height: 500px; /* You can adjust the height as needed */
     overflow: hidden;
-    border-radius: 20px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    margin-bottom: 50px;
 }
 
-.hero-video {
-    position: absolute; /* Position it absolutely */
-    top: 50%; /* Center it vertically */
-    left: 50%; /* Center it horizontally */
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    object-fit: cover; /* Cover the area without distortion */
-    opacity: 0.8; /* Adjust opacity for transparency effect */
-    transform: translate(-50%, -50%); /* Center it */
-    z-index: 1; /* Behind other content */
-}
-
-.hero-overlay {
+.background-video-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 2; /* Above the video */
+    z-index: -1; /* Place video behind content */
+    overflow: hidden;
 }
 
-.hero-content {
-    position: relative; /* Keep it above the video */
-    z-index: 3; /* Ensure it's on top of the video and overlay */
-    text-align: center; /* Center align the text */
-    color: white; /* Text color */
-    padding: 20px; /* Padding around the content */
-    display: flex; /* Use flexbox for centering */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: center; /* Center vertically */
-    height: 100%; /* Full height for centering */
+#backgroundVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* This ensures the video covers the section area */
 }
 
-#hero h2 {
-    font-size: 3.5em; /* Normal size */
-    text-shadow: 
-        0 0 5px rgba(148, 255, 232, 1),
-        0 0 15px rgba(148, 255, 232, 1),
-        0 0 30px rgba(148, 255, 232, 1);
-    animation: glowing 1.5s infinite alternate;
+//* Set general styles for the empowering section */
+/* Set general styles for the empowering section */
+#empowering {
+    position: relative;
+    height: 1000px; /* Increased the height of the section */
+    overflow: hidden;
+}
+
+/* Adjust the position and size of the background video */
+.background-video-container {
+    position: absolute;
+    top: 0; /* Keep the video at the top of the section */
+    left: 0;
+    width: 100%;
+    height: 120%; /* Increase the height to cover more of the section */
+    z-index: -1; /* Place video behind content */
+    overflow: hidden;
+}
+
+#backgroundVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video fills the container */
+    opacity: 0.7;
+}
+
+/* Content inside the Empowering section */
+.empowering-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 200px 20px;
+}
+
+.empowering-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+}
+
+
+/* About Us Section */
+#about {
+    padding: 80px 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    color: #fff;
+}
+
+#about h2 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #00d4ff;
     margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
-@keyframes glowing {
+#about p {
+    font-size: 18px;
+    max-width: 800px;
+    margin: 20px auto;
+    color: #ccc;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    position: relative;
+    margin: 15% auto;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* Footer Section */
+#footer {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #fff;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#footer .footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+#footer .social-icons {
+    margin-top: 20px;
+}
+
+#footer .social-icons a {
+    margin: 0 15px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s ease;
+}
+
+#footer .social-icons a:hover {
+    color: #00d4ff;
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
     0% {
-        text-shadow: 
-            0 0 5px rgba(148, 255, 232, 1),
-            0 0 10px rgba(148, 255, 232, 1),
-            0 0 15px rgba(148, 255, 232, 1);
-        transform: scale(1);
+        opacity: 0;
+        transform: translateY(30px);
     }
     100% {
-        text-shadow: 
-            0 0 20px rgba(148, 255, 232, 1),
-            0 0 40px rgba(148, 255, 232, 0.8),
-            0 0 60px rgba(148, 255, 232, 0.6);
-        transform: scale(1.05);
-    }
-}
-
-#hero p {
-    font-size: 1.2em;
-    margin: 20px 0;
-    animation: fadeIn 2s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-/* Button styles in hero */
-.btn-hero {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 24px;
-    text-decoration: none;
-    font-size: 1.2em;
-    border-radius: 50px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: var(--box-shadow-light);
-    margin-top: 30px;
-    position: relative;
-    z-index: 2;
-}
-
-.btn-hero:hover {
-    background-color: #00394d; /* Darken color */
-    transform: scale(1.05);
-}
-
-/* Glassmorphism effect for header */
-header {
-    background: var(--header-gradient);
-    color: white;
-    padding: 30px 0;
-    position: relative;
-    border-radius: 15px;
-    margin: 0 20px;
-    backdrop-filter: blur(10px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: var(--box-shadow-light);
-}
-
-/* Other styles (logo, navigation, sections, etc.) remain unchanged */
-
-/* Logo styles */
-.logo img {
-    width: clamp(200px, 20vw, 250px); /* Adjusted size */
-    height: auto;
-}
-
-/* Title styling */
-h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 3.5em;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-}
-
-/* Navigation styles */
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin-left: 20px;
-}
-
-nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 10px 15px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.1);
-    transition: background 0.3s;
-}
-
-nav ul li a:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-/* Section styles */
-section {
-    padding: 40px;
-    text-align: center;
-}
-
-/* About Us Section */
-#about {
-    background-color: #e0f7fa;
-    padding: 50px 20px;
-    margin: 50px 20px;
-    border-radius: 12px;
-    box-shadow: var(--box-shadow-light);
-    text-align: left;
-    position: relative;
-    opacity: 0;
-    transform: translateX(-20px);
-    animation: slideIn 0.8s ease-in-out forwards;
-}
-
-@keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateX(-20px);
+/* Glowing Animation for Empowering Title */
+@keyframes glow {
+    0% {
+        text-shadow: 0px 0px 10px rgba(0, 212, 255, 0.6), 0px 0px 20px rgba(0, 212, 255, 0.6);
     }
-    to {
-        opacity: 1;
-        transform: translateX(0);
+    100% {
+        text-shadow: 0px 0px 30px rgba(0, 212, 255, 1), 0px 0px 60px rgba(0, 212, 255, 1);
     }
 }
 
-.about-content {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
+#empowering h1 {
+    animation: glow 1.5s infinite alternate;
 }
 
-.about-image {
-    max-width: 40%;
-    height: auto;
-    border-radius: 12px;
-    margin-right: 20px;
-    box-shadow: var(--box-shadow-light);
-}
-
-.about-text {
-    flex: 1;
-}
-
-.about-text p {
-    font-size: 1.1em;
-    line-height: 1.8;
-    margin-bottom: 20px;
-}
-
-/* Testimonial styles */
-.testimonial {
-    background-color: #e9ecef;
-    padding: 15px;
-    margin: 10px;
-    border-radius: 10px;
-    box-shadow: var(--box-shadow-light);
-    transition: transform 0.2s;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeIn 0.8s ease-in-out forwards;
-}
-
-.testimonial:hover {
-    transform: scale(1.05);
-}
-
-/* Footer styles */
-footer {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 20px;
-    text-align: center;
-    margin-top: 30px;
-    border-radius: 12px;
-    box-shadow: var(--box-shadow-light);
-}
-
-/* Modal styles */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    border-radius: 8px;
-    box-shadow: var(--box-shadow-hover);
-    transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-.modal-content.show {
-    transform: translateY(0);
-    opacity: 1;
-}
-
-/* Close button styles */
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Back to top button styles */
-/* Default hidden state */
-/* Back to Top button styles */
-.back-to-top {
-    position: relative; /* Positioned relative within the footer */
-    margin-top: 20px; /* Add some spacing */
-    display: none; /* Initially hidden */
-    background-color: var(--main-bg-color); /* Use main background color */
-    color: white; /* Text color */
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    border-radius: 5px;
-    text-align: center;
-}
-
-/* Show the button when it’s visible */
-footer .back-to-top {
-    display: block; /* Display the button within the footer */
-}
-
-/* Hover effect */
-.back-to-top:hover {
-    background-color: #444; /* Slightly darker background on hover */
-    color: #fff; /* White text */
-}
-
-
-/* Smooth scrolling */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Media Queries for Responsiveness */
+/* Mobile Responsiveness */
 @media (max-width: 768px) {
-    header {
-        padding: 15px 0;
-        margin: 0 10px;
+    .header-title h1 {
+        font-size: 24px;
+        letter-spacing: 1px;
     }
 
-    nav ul {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    #hero {
-    position: relative; /* Ensure position relative for absolute children */
-    height: 80vh; /* Maintain the height */
-    overflow: hidden; /* Hide any overflow */
-    border-radius: 20px; /* Rounded corners */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow for effect */
-}
-
-.hero-video {
-    position: absolute; /* Position it absolutely */
-    top: 50%; /* Center it vertically */
-    left: 50%; /* Center it horizontally */
-    width: 120%; /* Set width to exceed the normal bounds */
-    height: 120%; /* Adjust height if needed for coverage */
-    z-index: 1; /* Send it behind other content */
-    transform: translate(-50%, -50%); /* Center it */
-    object-fit: cover; /* Cover the area without distortion */
-    opacity: 0.6; /* Adjust opacity for transparency effect */
-}
-
-
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 2; /* Keep it above the video */
-}
-
-.hero-content {
-    position: relative; /* Keep it above the video */
-    z-index: 3; /* Ensure it's on top of the video and overlay */
-    text-align: center; /* Center align the text */
-    color: white; /* Text color */
-    padding: 20px; /* Padding around the content */
-    display: flex; /* Use flexbox for centering */
-    flex-direction: column; /* Stack content vertically */
-    justify-content: center; /* Center vertically */
-    height: 100%; /* Full height for centering */
-}
-
-    .about-content {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .about-image {
-        max-width: 80%;
-        margin-right: 0;
-        margin-bottom: 20px;
-    }
-
-    .about-text {
-        text-align: center;
+    #empowering h1 {
+        font-size: 40px;
+        text-shadow: 0px 0px 10px rgba(0, 212, 255, 0.6);
     }
 
     .btn {
-        font-size: 1em;
-        padding: 10px 20px;
+        width: 100%;
+        padding: 12px 0;
     }
+
+    .logo img {
+        width: 80px;
+    }
+/* Parallax Effect */
+#empowering {
+    background-size: cover;
+    background-position: center center;
+    transition: background-position 0.1s;
 }
 
-@media (max-width: 480px) {
-    h1 {
-        font-size: 2.5em;
-    }
-
-    #hero h2 {
-        font-size: 2em;
-    }
-}
-
-/* Loading Animation */
-.loading-animation {
+/* Sticky Header */
+#header.sticky {
     position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    display: flex;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Progress Bar */
+#progressBarContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: #333;
+}
+
+#progressBar {
+    height: 5px;
+    background: #00d4ff;
+    width: 0;
+    transition: width 0.1s ease;
+}
+
+/* Hover Effects for Images */
+.hover-effect {
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.hover-effect.hovered {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+}
+
+.accordion.active, .accordion:hover {
+    background-color: #ccc;
+}
+
+.accordion + .panel {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f9f9f9;
+}
+
+/* Mobile Navigation */
+#navMenu {
+    display: none;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #333;
 }
 
-.spinner {
-    border: 8px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    border-top: 8px solid white;
-    width: 50px;
-    height: 50px;
-    animation: spin 1s linear infinite;
+#navMenu.active {
+    display: flex;
 }
 
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+#menuButton {
+    background-color: #00d4ff;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    cursor: pointer;
 }
 
-/* Animated Background on Scroll */
-@keyframes scrollAnimation {
-    0% {
-        background-position: 0% 50%;
+#menuButton:hover {
+    background-color: #007bff;
+}
+
+/* Basic Styling for Accordion and FAQ */
+.accordion {
+    margin-bottom: 10px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    /* Navigation Menu */
+    #navMenu {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #333;
+        z-index: 999;
     }
-    100% {
-        background-position: 100% 50%;
+
+    #navMenu a {
+        color: #fff;
+        text-decoration: none;
+        padding: 15px;
+        font-size: 18px;
+        display: block;
     }
+
+    #navMenu a:hover {
+        background-color: #444;
+    }
+}
+
 }
