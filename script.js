@@ -54,31 +54,3 @@ window.addEventListener("scroll", function () {
         header.classList.remove("sticky");
     }
 });
-
-// Image Hover Effect
-const images = document.querySelectorAll('.hover-effect');
-images.forEach(image => {
-    image.addEventListener('mouseenter', () => {
-        image.classList.add('hovered');
-    });
-    image.addEventListener('mouseleave', () => {
-        image.classList.remove('hovered');
-    });
-});
-
-// Accordion FAQ
-const accordions = document.querySelectorAll('.accordion');
-accordions.forEach(accordion => {
-    accordion.addEventListener('click', () => {
-        const content = accordion.nextElementSibling;
-        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
-    });
-});
-
-// Toggle Navigation Menu for Mobile
-const menuButton = document.getElementById('menuButton');
-const navMenu = document.getElementById('navMenu');
-
-menuButton.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
