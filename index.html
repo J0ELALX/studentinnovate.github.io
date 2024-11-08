@@ -5,73 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Student Innovate</title>
-    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/jpeg" href="logo.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
+    <!-- Header Section -->
+    <header id="header">
         <div class="logo">
-            <img src="title.jpg" alt="Student Innovate Logo" width="300" height="193" fetchpriority="high">
+            <img src="title.jpg" alt="Student Innovate Logo" id="logoImage">
+        </div>
+        <div class="header-title">
             <h1>Student Innovate</h1>
         </div>
-        <nav id="navbar">
-            <ul>
-                <li><a href="project.html">Our Events</a></li>
-            </ul>
-        </nav>
+       <a href="project.html"> <button class="btn" id="eventsButton">Our Events</button></a>
+        
     </header>
 
-   <section id="hero">
-    <video class="hero-video" autoplay muted loop>
-        <source src="110.mp4" type="video/mp4">
-        Your browser does not support HTML5 video.
-    </video>
-    <div class="hero-content">
-        <h2>Empowering Students to Innovate</h2>
-        <p>Join us in our mission to enhance education.</p>
+    <!-- Progress Bar -->
+    <div id="progressBarContainer">
+        <div id="progressBar"></div>
     </div>
-    <div class="hero-overlay"></div> <!-- Optional overlay for readability -->
-</section>
 
-
-
-
-   <section id="about">
-    <h2>About Us</h2>
-    <div class="about-content">
-        <div class="about-text">
-            <p>
-                At <strong>Student Innovate</strong>, we are passionate about fostering creativity and innovation among students. 
-                Our platform provides young innovators the resources and exposure they need to bring their ideas to life.
-            </p>
-            <p>
-                Through our initiatives, we aim to cultivate a collaborative environment where students can learn, grow, 
-                and share their projects with a global audience.
-            </p>
-            <p>
-                Join us in shaping the future and be part of a community that celebrates innovation and leadership. 
-                <strong>Together, let's transform ideas into action!</strong>
-            </p>
+    <!-- Body Section: Empowering Students -->
+    <section id="empowering">
+        <!-- Background Video -->
+        <div class="background-video-container">
+            <video autoplay loop muted id="backgroundVideo">
+                <source src="110.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
         </div>
-    </div>
-</section>
+        <div class="empowering-content">
+            <h1>Empowering Students</h1>
+            <p>Join us in our mission to enhance education.</p>
+        </div>
+    </section>
 
+    <!-- About Us Section -->
+    <section id="about">
+        <h2>About Us</h2>
+        <p>Student Innovate is a platform dedicated to empowering students. Our mission is to provide students with the resources, inspiration, and opportunities they need to grow, develop, and lead in their chosen fields.</p>
+    </section>
 
-    <footer id="contact">
-        <h3>Contact Us</h3>
-        <p>Email:</p>
-        <p>Phone:</p>
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="footer-content">
+            <p>Contact: info@studentinnovate.com</p>
+            <div class="social-icons">
+                <a href="#">LinkedIn</a>
+                <a href="#">Twitter</a>
+                <a href="#">Facebook</a>
+            </div>
+        </div>
     </footer>
-
-    <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 id="modal-title"></h2>
-            <p id="modal-description"></p>
-        </div>
-    </div>
-
 
     <script src="script.js"></script>
 </body>
