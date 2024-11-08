@@ -1,111 +1,84 @@
-// Theme Management
-const themeToggle = document.getElementById('theme-toggle');
-const body = document.body;
-
-// Load theme from localStorage
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme) {
-    body.classList.toggle('dark', currentTheme === 'dark');
-    themeToggle.textContent = currentTheme === 'dark' ? "Toggle Light Mode" : "Toggle Dark Mode";
-}
-
-// Toggle dark mode and save preference
-themeToggle.addEventListener('click', () => {
-    const isDarkMode = body.classList.toggle('dark');
-    themeToggle.textContent = isDarkMode ? "Toggle Light Mode" : "Toggle Dark Mode";
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light'); // Save preference
-});
-
-// Smooth scroll for internal links
-const internalLinks = document.querySelectorAll('a[href^="#"]');
-internalLinks.forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
+// Smooth Scroll for navigation
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
         e.preventDefault();
-        
-        // Add smooth animation class
-        body.classList.add('scrolling');
-
-        // Scroll to the target section smoothly
-        document.querySelector(this.getAttribute('href')).scrollIntoView({ 
-            behavior: 'smooth' 
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth"
         });
-
-        // Remove smooth animation class after scroll
-        setTimeout(() => {
-            body.classList.remove('scrolling');
-        }, 500); // Match this duration to your desired scroll animation duration
     });
 });
 
-// Back to top button functionality
-const backToTopButton = document.getElementById('back-to-top');
-
-// Show button when scrolling down
-window.onscroll = function () {
-    backToTopButton.style.display = (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) ? "block" : "none";
-};
-
-// Scroll to top when button is clicked
-backToTopButton.addEventListener('click', function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
 // Modal functionality
-const modal = document.getElementById('modal');
-const modalTitle = document.getElementById('modal-title');
-const modalDescription = document.getElementById('modal-description');
-const closeModal = document.querySelector('.close');
+const modal = document.getElementById("eventsModal");
+const eventsButton = document.getElementById("eventsButton");
+const closeBtn = document.querySelector(".close-btn");
 
-// Event delegation for project cards
-document.getElementById('projects').addEventListener('click', (event) => {
-    const card = event.target.closest('.project-card');
-    if (card) {
-        const title = card.querySelector('h3').innerText;
-        const description = card.querySelector('p').innerText;
-        modalTitle.innerText = title;
-        modalDescription.innerText = description;
-        modal.style.display = "block"; // Show the modal
+eventsButton.addEventListener("click", function () {
+    modal.style.display = "block";
+});
+
+closeBtn.addEventListener("click", function () {
+    modal.style.display = "none";
+});
+
+// Close the modal if clicked outside of it
+window.addEventListener("click", function (e) {
+    if (e.target === modal) {
+        modal.style.display = "none";
     }
 });
 
-// Close modal when the close button is clicked
-closeModal.addEventListener('click', () => {
-    modal.style.display = "none"; // Hide the modal
-});
+// Scroll Animation (Fade In Effect)
+window.addEventListener("scroll", function () {
+    const elements = document.querySelectorAll(".empowering-content, #about h2, #about p, .accordion");
+    elements.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+            el.classList.add("animate");
+        }
+    });
 
-// Close modal when clicking outside of the modal content
-window.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        modal.style.display = "none"; // Hide the modal
+    // Parallax Effect (for background images)
+    const background = document.getElementById('empowering');
+    let scrollPosition = window.scrollY;
+    background.style.backgroundPosition = 'center ' + (scrollPosition * 0.5) + 'px';
+
+    // Show Progress Bar as the user scrolls
+    let scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    document.getElementById("progressBar").style.width = scrollPercentage + "%";
+
+    // Sticky Header
+    const header = document.getElementById("header");
+    if (window.scrollY > 100) {
+        header.classList.add("sticky");
+    } else {
+        header.classList.remove("sticky");
     }
 });
 
-// Responsive modal size adjustment
-window.addEventListener('resize', () => {
-    const modalContent = modal.querySelector('.modal-content');
-    modalContent.style.width = window.innerWidth > 600 ? '60%' : '90%'; // Adjust modal size based on viewport
+// Image Hover Effect
+const images = document.querySelectorAll('.hover-effect');
+images.forEach(image => {
+    image.addEventListener('mouseenter', () => {
+        image.classList.add('hovered');
+    });
+    image.addEventListener('mouseleave', () => {
+        image.classList.remove('hovered');
+    });
 });
 
-// Loading animation (example)
-const showLoading = () => {
-    const loadingDiv = document.createElement('div');
-    loadingDiv.innerText = "Loading...";
-    loadingDiv.style.position = "fixed";
-    loadingDiv.style.top = "50%";
-    loadingDiv.style.left = "50%";
-    loadingDiv.style.transform = "translate(-50%, -50%)";
-    loadingDiv.style.zIndex = "1000";
-    loadingDiv.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-    loadingDiv.style.color = "white";
-    loadingDiv.style.padding = "20px";
-    loadingDiv.style.borderRadius = "8px";
-    document.body.appendChild(loadingDiv);
-    
-    // Simulate loading delay (for demonstration)
-    setTimeout(() => {
-        document.body.removeChild(loadingDiv);
-    }, 2000);
-};
+// Accordion FAQ
+const accordions = document.querySelectorAll('.accordion');
+accordions.forEach(accordion => {
+    accordion.addEventListener('click', () => {
+        const content = accordion.nextElementSibling;
+        content.style.maxHeight = content.style.maxHeight ? null : content.scrollHeight + "px";
+    });
+});
 
-// Call showLoading on page load (or wherever appropriate)
-window.onload = showLoading;
+// Toggle Navigation Menu for Mobile
+const menuButton = document.getElementById('menuButton');
+const navMenu = document.getElementById('navMenu');
+
+menuButton.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
